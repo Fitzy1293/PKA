@@ -43,7 +43,7 @@ def main(url):
                             break
 
                     if hasTimelineFlag:
-                        timeline[-1] = timeline[-1].split('\\"}')[0]
+                        timeline[-1] = timeline[-1].split('"}')[0]
                         
                         finalTimeline = []
                         for i in timeline[lastStart[-1]:]:
@@ -57,6 +57,9 @@ def main(url):
                         f.write(episode + ' - ' + url + '\n')
                         for i in finalTimeline:
                             f.write('\t' + i+'\n')
+                            if '"allowRatings"' in i:
+                                break
+                            
                         f.write('\n')
 
                     else:
