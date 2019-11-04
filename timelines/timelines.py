@@ -56,9 +56,12 @@ def main(url):
 
                         f.write(episode + ' - ' + url + '\n')
                         for i in finalTimeline:
-                            f.write('\t' + i+'\n')
                             if '"allowRatings"' in i:
+                                f.write('\t' + i.split('"')[0] + '\n')
                                 break
+
+                            f.write('\t' + i+'\n')
+                                
                             
                         f.write('\n')
 
