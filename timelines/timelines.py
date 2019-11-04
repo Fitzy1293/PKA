@@ -11,18 +11,19 @@ def main(url):
     with open(url, 'r') as f:
         episodes = json.load(f)['episodes']
 
-    with open('Timeline.txt','w+') as f:
+    with open('Timeline.txt','w+',encoding='utf-8') as f:
         for episode in episodes:
             url = f'https://www.youtube.com/watch?v={episodes[episode]["YouTube"]}'
+            if float(episode.split('_')[1]) > 329:
+                continue
             print(episode)
             print(url)
-
+  
             htmlStr = requests.get(url).text
-
             htmlStr = htmlStr.split('<')
 
             for i in htmlStr:
-                if 'RELATED_PLAYER_ARGS' in i:
+                if 'RELATED_PLAYER_ARGS' in i:  
                     
                     description = i.split("'RELATED_PLAYER_ARGS':")[-1]        
                     description = ''.join(description)
@@ -30,26 +31,37 @@ def main(url):
 
                     timelineCheck = [str(i) for i in range(10)]
                     timeline = [i.rstrip('\\') for i in description if i[0] in timelineCheck] #If the line starts with str 1-9 then it's part of timeline.
-                    
+
+                    hasTimelineFlag= False 
                     for i, stamp in enumerate(timeline):
-                        if '0:00:00' in stamp:
-                            startTimeline = i
+                        #pprint(stamp)
+                        if stamp[0:6] == '0:00:0': #Some timelines did not start at 0
+                            start=i
+                            hasTimelineFlag = True
+                        if stamp[0:5] == '0:00 ': #Some timelines started with a minute and second level accuracy
+                            start=i
+                            hasTimelineFlag = True
+                            break
 
-                    timeline = timeline[startTimeline : ]
-                    timeline[-1] = timeline[-1].split('\\"}')[0]
-                    
-                    finalTimeline = []
-                    for i in timeline:
-                        fixed = i.split('\\\\u0026')
-                        fixed = '&'.join(fixed)
+                    if hasTimelineFlag:
+                        timeline[-1] = timeline[-1].split('\\"}')[0]
+                        
+                        finalTimeline = []
+                        for i in timeline[start:]:
+                            fixed = i.split('\\\\u0026')
+                            fixed = '&'.join(fixed)
 
-                        fixed = fixed.split('\\/')
-                        fixed = '/'.join(fixed)
-                        finalTimeline.append(fixed)
+                            fixed = fixed.split('\\')
+                            fixed = ''.join(fixed)
+                            finalTimeline.append(fixed)
 
-                    f.write(episode + '\n')
-                    for i in finalTimeline:
-                        f.write('\t' + i+'\n')
-                    f.write('\n')
+                        f.write(episode + '\n')
+                        for i in finalTimeline:
+                            f.write('\t' + i+'\n')
+                        f.write('\n')
 
+                    else:
+                        f.write(episode + ' - ' + url + '\n\n')
+
+                
 main('pkaInfo.json')
