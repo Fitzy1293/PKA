@@ -1,11 +1,14 @@
-#VERY IMPORTANT INFO TO RUN THIS PROPERLY.
-#Download this https://ffmpeg.zeranoe.com/builds/
-    #Go into the bin folder and put ffmpeg.exe in the folder where archivePKA.py is executed
-    #Don't need the other stuff in the download delete all that. 
+#Work can be found => https://github.com/Fitzy1293/PKA/tree/master/Audio%20Archive
+
+#VERY IMPORTANT TO RUN THIS PROPERLY.
+    #Install the youtube-dl package however you normally install packages.
+    #Download this https://ffmpeg.zeranoe.com/builds/
+        #Go into the bin folder and put ffmpeg.exe in the folder where archivePKA.py is executed
+        #Don't need the other stuff in the download delete all that.
+        #Included a .zip on the github so you can just take it from there without all the other stuff.
 
 import youtube_dl
 from pprint import pprint
-import requests
 import json
 
 def youtubeMP3(urlList):
@@ -35,7 +38,7 @@ def getUrlsPKA():
     return pkaUrls
 
 def main():
-    pkaUrls = getUrlsPKA()[0:1]
+    pkaUrls = getUrlsPKA()
     youtubeMP3(pkaUrls)
         
 main()
