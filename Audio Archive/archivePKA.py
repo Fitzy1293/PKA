@@ -1,11 +1,18 @@
 #Work can be found => https://github.com/Fitzy1293/PKA/tree/master/Audio%20Archive
+#This was written on Windows with Python 3.7
 
-#VERY IMPORTANT TO RUN THIS PROPERLY.
+#IMPORTANT TO RUN THIS PROPERLY.
     #Install the youtube-dl package however you normally install packages.
     #Download this https://ffmpeg.zeranoe.com/builds/
         #Go into the bin folder and put ffmpeg.exe in the folder where archivePKA.py is executed
         #Don't need the other stuff in the download delete all that.
         #Included a .zip on the github so you can just take it from there without all the other stuff.
+
+
+
+#The file size of the average 4 hour PKA is ~350,000 KB.
+#Assuming each is ~4 hours (the earlier ones are usually shorter)
+#350,000 KB * 468 ~156 GB (Binary)
 
 import youtube_dl
 from pprint import pprint
