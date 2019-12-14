@@ -1,3 +1,4 @@
+
 import requests
 import os
 from pprint import pprint
@@ -46,23 +47,21 @@ def main(url):
                         timeline[-1] = timeline[-1].split('"}')[0]
                         
                         finalTimeline = []
-                        for i in timeline[lastStart[-1]:]:
-                            fixed = i.split('\\\\u0026')
+                        for j in timeline[lastStart[-1]:]:
+                            fixed = j.split('\\\\u0026')
                             fixed = '&'.join(fixed)
-
                             fixed = fixed.split('\\')
                             fixed = ''.join(fixed)
                             finalTimeline.append(fixed)
 
                         f.write(episode + ' - ' + url + '\n')
-                        for i in finalTimeline:
-                            if '"allowRatings"' in i:
-                                f.write('\t' + i.split('"')[0] + '\n')
+                        for j in finalTimeline:
+                            if 'allowRatings' in j:
+                                f.write('\t' + j.split('"')[0] + '\n')
                                 break
 
-                            f.write('\t' + i+'\n')
+                            f.write('\t' + j +'\n')
                                 
-                            
                         f.write('\n')
 
                     else:
