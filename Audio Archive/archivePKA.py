@@ -2,13 +2,14 @@
 #This was written on Windows with Python 3.7
 
 #IMPORTANT TO RUN THIS PROPERLY.
+    #If you're from the PKA subreddit and don't have python installed, do that.
+        #Making this an .exe always leads to unkown insanity.
+
     #Install the youtube-dl package however you normally install packages.
     #Download this https://ffmpeg.zeranoe.com/builds/
         #Go into the bin folder and put ffmpeg.exe in the folder where archivePKA.py is executed
         #Don't need the other stuff in the download delete all that.
         #Included a .zip on the github so you can just take it from there without all the other stuff.
-
-
 
 #The file size of the average 4 hour PKA is ~350,000 KB.
 #Assuming each is ~4 hours (the earlier ones are usually shorter)
@@ -39,13 +40,12 @@ def getUrlsPKA():
     pkaUrls = []
     for key in episodes.keys():
         pkaUrls.append('https://www.youtube.com/watch?v=' + episodes[key]['YouTube'])
-
     pkaUrls.reverse()
     
     return pkaUrls
 
 def main():
-    pkaUrls = getUrlsPKA()
+    pkaUrls = getUrlsPKA() 
     youtubeMP3(pkaUrls)
         
 main()
