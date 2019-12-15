@@ -6,14 +6,13 @@ import csv
 
 #painkilleralready.info didn't have all timelines available.
 #Youtube has an api but didn't feel like learning it.
-def main(url):
-    with open(url, 'r') as f:
-        episodes = json.load(f)['episodes']
+def writeTimelines():
+    f = open('pkaInfo.json', 'r') 
+    episodes = json.load(f)['episodes']
 
     with open('Timeline.txt','w+',encoding='utf-8') as f:
         for episode in episodes:
             url = f'https://www.youtube.com/watch?v={episodes[episode]["YouTube"]}'
-        
             print(episode)
             print(url)
 
@@ -34,14 +33,11 @@ def main(url):
                     lastStart = []
                     for i, stamp in enumerate(timeline):
                         #pprint(stamp)
-                        if stamp[0:6] == '0:00:0': #Some timelines do not start at 0
-                            lastStart.append(i)
-                            hasTimelineFlag = True
-                        if stamp[0:5] == '0:00 ': #Some timelines started with a minute and second level accuracy
+                        if stamp[0].isnumeric() and stamp[1]==':' and stamp[2:4].isnumeric():
                             lastStart.append(i)
                             hasTimelineFlag = True
                             break
-
+       
                     if hasTimelineFlag:
                         timeline[-1] = timeline[-1].split('"}')[0]
                         
@@ -66,4 +62,4 @@ def main(url):
                     else:
                         f.write(episode + ' - ' + url + '\n\n')
                 
-main('pkaInfo.json')
+writeTimelines()
