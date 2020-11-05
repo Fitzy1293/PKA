@@ -5,8 +5,8 @@ Concatenate LegitimateRage's descriptions into one file. \
 
 [Here's the link to that file](https://github.com/Fitzy1293/PKA/blob/master/PKA_timelines.txt?raw=true)
 
-!(Imgur Image)[https://i.imgur.com/A39tlQM.png]
 
+![How each episode looks](https://i.imgur.com/A39tlQM.png)
 
 
 To get the descriptions I used yt-dl (R.I.P their github page) with the command
