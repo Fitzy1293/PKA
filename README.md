@@ -1,9 +1,9 @@
 # PKA
 
-Concatenate LegitimateRage's descriptions into one file. \
+Concatenate LegitimateRage's descriptions into one text file. \
 [This playlist](https://www.youtube.com/playlist?list=PL568FBE856C240972) had the most complete list of PKA urls.
 
-[Here's the link to that file](https://github.com/Fitzy1293/PKA/blob/master/PKA_timelines.txt?raw=true)
+[Here's the link to the file](https://github.com/Fitzy1293/PKA/blob/master/PKA_timelines.txt?raw=true)
 
 
 ![How each episode looks](https://i.imgur.com/A39tlQM.png)
