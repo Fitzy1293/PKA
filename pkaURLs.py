@@ -9,7 +9,7 @@ import sys
 def handleEpFromTitle(title):
     missingEps = (101, 169, 306, 350, 355) # Deleted.
 
-    if title.startswith('10 Year Anniversary'): 
+    if title.startswith('10 Year Anniversary'):
         return (488, title)
     elif title.startswith('Painkiller Already 169'): # Miss-titled. 169 is missing.
         return (168, 'Painkiller Already 169-NRrm-MomDD8.info.json')
@@ -84,7 +84,7 @@ def main():
             links.append(f'https://www.youtube.com/watch?v={vidDict["id"]}')
 
 
-        with open('PKA_timelines.txt', 'w+') as f:
+        with open('timelines_copy.txt', 'w+') as f:
             for i in range(len(sortedTitles)):
                 f.write(titles[i])
                 f.write('\n' + links[i])
