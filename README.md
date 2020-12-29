@@ -6,7 +6,7 @@ Concatenate LegitimateRage's descriptions into one text file.
 
 [Here's the link to the file](https://github.com/Fitzy1293/PKA/blob/master/PKA_timelines.txt?raw=true)
 
-I use it to power this discord bot. [Here's the link to add it to a server.](https://discord.com/oauth2/authorize?client_id=774108885182185482&scope=bot)
+I use it to power a discord PKA topic search bot. [Here's the link to add it to a server.](https://discord.com/oauth2/authorize?client_id=774108885182185482&scope=bot)
 
 
 ![How each episode looks](https://i.imgur.com/A39tlQM.png)
